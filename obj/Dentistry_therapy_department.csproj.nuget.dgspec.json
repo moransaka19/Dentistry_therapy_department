@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\C#\\ASP_CORE\\Dentistry_therapy_department\\Dentistry_therapy_department.csproj": {}
+    "D:\\!MOE\\!University\\Курсовой\\Dentistry_therapy_department\\Dentistry_therapy_department.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\C#\\ASP_CORE\\Dentistry_therapy_department\\Dentistry_therapy_department.csproj": {
+    "D:\\!MOE\\!University\\Курсовой\\Dentistry_therapy_department\\Dentistry_therapy_department.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\C#\\ASP_CORE\\Dentistry_therapy_department\\Dentistry_therapy_department.csproj",
+        "projectUniqueName": "D:\\!MOE\\!University\\Курсовой\\Dentistry_therapy_department\\Dentistry_therapy_department.csproj",
         "projectName": "Dentistry_therapy_department",
-        "projectPath": "D:\\Projects\\C#\\ASP_CORE\\Dentistry_therapy_department\\Dentistry_therapy_department.csproj",
+        "projectPath": "D:\\!MOE\\!University\\Курсовой\\Dentistry_therapy_department\\Dentistry_therapy_department.csproj",
         "packagesPath": "C:\\Users\\Владислав\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\C#\\ASP_CORE\\Dentistry_therapy_department\\obj\\",
+        "outputPath": "D:\\!MOE\\!University\\Курсовой\\Dentistry_therapy_department\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -40,6 +40,16 @@
       },
       "frameworks": {
         "netcoreapp3.0": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.0.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
