@@ -1,8 +1,22 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<Dentistry_therapy_department.Models.Journal>
+@{
+    ViewBag.Title = "Журнал";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<a asp-action="Create">Добавить запись</a>
+<table  class="table">
+    <tr>
+        <td>Дата</td>
+        <td>IdДоктора</td>
+        <td>IdПроцедуры</td>
+        <td>IdПациента</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Date</td>
+            <td>@item.DoctorId</td>
+            <td>@item.ProcedureId</td>
+            <td>@item.MedRecordId</td>
+        </tr>
+    }
+</table>
