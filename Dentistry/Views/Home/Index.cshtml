@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Dentistry.Models.JournalViewModel>
+
+@{
+    ViewData["Title"] = "Журнал";
+}
+
+<h1>Журнал</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Дата
+            </th>
+            <th>
+                Имя Доктора
+            </th>
+            <th>
+                Фамилия доктора
+            </th>
+            <th>
+                Название процедуры
+            </th>
+            <td>
+                Имя пациента
+            </td>
+            <td>
+                Фамилия пациента
+            </td>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doctor.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doctor.SecondName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Procedure.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MedRecord.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MedRecord.SecondName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
