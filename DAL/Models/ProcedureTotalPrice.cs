@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DAL.Models
 {
-    public class ProcedureTotalPriceView
+    public class ProcedureTotalPrice
     {
         public MedRecord MedRecord { get; set; }
         public Procedure Procedure { get; set; }

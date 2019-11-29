@@ -5,6 +5,6 @@ namespace DAL.Repositories
 {
     public interface IProcedureRepository : IBaseRepository<Procedure>
     {
-        IEnumerable<ProcedureTotalPriceView> GetProcedureTotalPrices();
+        IEnumerable<ProcedureTotalPrice> GetProcedureTotalPrices();
     }
 }

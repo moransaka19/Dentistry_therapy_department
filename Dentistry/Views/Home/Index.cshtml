@@ -1,10 +1,10 @@
-﻿@model IEnumerable<DAL.Models.Doctor>
+﻿@model IEnumerable<Dentistry.Models.JournalViewModel>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Журнал";
 }
 
-<h1>Index</h1>
+<h1>Журнал</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -13,14 +13,23 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.DoctorId)
+                Дата
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FirstName)
+                Имя Доктора
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SecondName)
+                Фамилия доктора
             </th>
+            <th>
+                Название процедуры
+            </th>
+            <td>
+                Имя пациента
+            </td>
+            <td>
+                Фамилия пациента
+            </td>
             <th></th>
         </tr>
     </thead>
@@ -28,17 +37,25 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.DoctorId)
+                @Html.DisplayFor(modelItem => item.Date)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
+                @Html.DisplayFor(modelItem => item.Doctor.FirstName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.SecondName)
+                @Html.DisplayFor(modelItem => item.Doctor.SecondName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Procedure.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MedRecord.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MedRecord.SecondName)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>

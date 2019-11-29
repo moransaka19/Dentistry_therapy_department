@@ -20,9 +20,10 @@ namespace Dentistry.Controllers
         // GET: Reports
         public ActionResult Index()
         {
-            var reports = _procedureRepository.GetProcedureTotalPrices();
+            var procedureTotalPrices = _procedureRepository.GetProcedureTotalPrices();
+            
 
-            return View(reports);
+            return View();
         }
     }
 }

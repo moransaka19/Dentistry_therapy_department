@@ -23,7 +23,7 @@ namespace DAL.Repositories.Implementations
 
         public override IEnumerable<Procedure> GetAll()
         {
-            return Connection.Query<Procedure>("select * from Procedure");
+            return Connection.Query<Procedure>("select * from [Procedure]");
         }
 
         public override void Remove(long id)
@@ -36,9 +36,9 @@ namespace DAL.Repositories.Implementations
             throw new System.NotImplementedException();
         }
 
-        public IEnumerable<ProcedureTotalPriceView> GetProcedureTotalPrices()
+        public IEnumerable<ProcedureTotalPrice> GetProcedureTotalPrices()
         {
-            var result = Connection.Query<ProcedureTotalPriceView, Procedure, MedRecord, ProcedureTotalPriceView>("GetProceduresTotalPrice",
+            var result = Connection.Query<ProcedureTotalPrice, Procedure, MedRecord, ProcedureTotalPrice>("GetProceduresTotalPrice",
                 map: (ptp, p, mr) =>
                 {
                     ptp.MedRecord = mr;
@@ -46,7 +46,7 @@ namespace DAL.Repositories.Implementations
 
                     return ptp;
                 },
-                splitOn: "ProcedureId ,MedRecordId",
+                splitOn: "ProcedureId,MedRecordId",
                 commandType: CommandType.StoredProcedure);
             return result;
         }

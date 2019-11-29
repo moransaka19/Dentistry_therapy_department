@@ -28,6 +28,7 @@ namespace Dentistry
 			services.AddTransient<IDoctorRepository>(_ => new DoctorRepository(Configuration.GetConnectionString("DefaultConnection")));
 			services.AddTransient<IJournalRepository>(_ => new JournalRepository(Configuration.GetConnectionString("DefaultConnection")));
 			services.AddTransient<IProcedureRepository>(_ => new ProcedureRepository(Configuration.GetConnectionString("DefaultConnection")));
+			services.AddTransient<IMedRecordRepository>(_ => new MedRecordRepository(Configuration.GetConnectionString("DefaultConnection")));
 
 			services.AddControllersWithViews();
 		}
@@ -49,8 +50,6 @@ namespace Dentistry
 			app.UseStaticFiles();
 
 			app.UseRouting();
-
-			app.UseAuthorization();
 
 			app.UseEndpoints(endpoints =>
 			{
