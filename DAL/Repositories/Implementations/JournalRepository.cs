@@ -33,6 +33,9 @@ namespace DAL.Repositories.Implementations
 
         public override void Remove(long id)
         {
+            var query = $"delete from [Journal] where JournalId = {id}";
+
+            Connection.Query(query);
         }
 
         public override void Update(Journal item)

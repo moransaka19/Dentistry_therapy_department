@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using DAL.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Dentistry.Models;
 
 namespace Dentistry.Controllers
 {
@@ -21,9 +22,26 @@ namespace Dentistry.Controllers
         public ActionResult Index()
         {
             var procedureTotalPrices = _procedureRepository.GetProcedureTotalPrices();
-            
+            var procedureTotalPriceViewModels = procedureTotalPrices.Select(x => new ProcedureTotalPriceViewModel
+            {
+                MedRecord = new MedRecordViewModel
+                { 
+                    MedRecordId = x.MedRecord.MedRecordId,
+                    DOB = x.MedRecord.DOB,
+                    FirstName = x.MedRecord.FirstName,
+                    SecondName = x.MedRecord.SecondName,
+                    SickId = x.MedRecord.SickId
+                     
+                },
+                Price = x.Price,
+                Procedure = new ProcedureVIewModel
+                {
+                    ProcedureId = x.Procedure.ProcedureId,
+                    Name = x.Procedure.Name,
+                }
+            });
 
-            return View();
+            return View(procedureTotalPriceViewModels);
         }
     }
 }

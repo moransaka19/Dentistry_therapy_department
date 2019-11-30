@@ -31,6 +31,7 @@ namespace Dentistry.Controllers
             var journals = _journalRepository.GetJournals();
             var journalViewmodels = journals.Select(x => new JournalViewModel
             {
+                JounalId = x.JournalId,
                 Date = x.Date,
                 Doctor = new DoctorViewModel
                 {
@@ -136,8 +137,10 @@ namespace Dentistry.Controllers
         }
 
         // GET: Journal/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(long id)
         {
+            _journalRepository.Remove(id);
+
             return View();
         }
 

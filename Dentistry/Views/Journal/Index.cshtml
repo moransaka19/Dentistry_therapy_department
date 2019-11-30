@@ -24,19 +24,18 @@
             <th>
                 Название процедуры
             </th>
-            <td>
+            <th>
                 Имя пациента
-            </td>
-            <td>
+            </th>
+            <th>
                 Фамилия пациента
-            </td>
-            <th></th>
+            </th>
         </tr>
     </thead>
-    <tbody>
+    <tbody id="tbody">
         @foreach (var item in Model)
         {
-            <tr>
+            <tr class="123">
                 <td>
                     @Html.DisplayFor(modelItem => item.Date)
                 </td>
