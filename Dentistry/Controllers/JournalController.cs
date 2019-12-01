@@ -136,22 +136,11 @@ namespace Dentistry.Controllers
             }
         }
 
-        // GET: Journal/Delete/5
-        public ActionResult Delete(long id)
-        {
-            _journalRepository.Remove(id);
-
-            return View();
-        }
-
-        // POST: Journal/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id)
         {
             try
             {
-                // TODO: Add delete logic here
+                _journalRepository.Remove(id);
 
                 return RedirectToAction(nameof(Index));
             }

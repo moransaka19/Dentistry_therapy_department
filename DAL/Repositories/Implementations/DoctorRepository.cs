@@ -33,7 +33,9 @@ namespace DAL.Repositories.Implementations
 
 		public override void Remove(long id)
 		{
+            var query = $"delete from [Doctor] where DoctorId = {id}";
 
+            Connection.Execute(query);
 		}
 	}
 }

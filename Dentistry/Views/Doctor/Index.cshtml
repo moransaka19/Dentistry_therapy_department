@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DAL.Models.Doctor>
+﻿@model IEnumerable<Dentistry.Models.DoctorViewModel>
 
 @{
     ViewData["Title"] = "Doctor";
@@ -38,8 +38,7 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Delete", "DeleteDoctor", "Doctor", new { id=item.DoctorId })
             </td>
         </tr>
 }
