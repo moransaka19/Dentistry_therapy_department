@@ -1,11 +1,8 @@
-﻿CREATE TABLE [dbo].[MedRecord](
-	[MedRecordId] [int] IDENTITY(1,1) NOT NULL,
-	[FirstName] [nvarchar](100) NULL,
-	[SecondName] [nvarchar](100) NULL,
-	[DOB] [date] NULL,
-	[SickId] [int] NULL,
-PRIMARY KEY CLUSTERED 
-(
-	[MedRecordId] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
+﻿CREATE TABLE [dbo].[MedRecord] (
+    [MedRecordId] INT            IDENTITY (1, 1) NOT NULL,
+    [FirstName]   NVARCHAR (100) NULL,
+    [SecondName]  NVARCHAR (100) NULL,
+    [DOB]         DATE           NULL,
+    PRIMARY KEY CLUSTERED ([MedRecordId] ASC)
+);
+
