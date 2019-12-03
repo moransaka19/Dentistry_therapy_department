@@ -31,7 +31,7 @@ namespace Dentistry.Controllers
             var journals = _journalRepository.GetJournals();
             var journalViewmodels = journals.Select(x => new JournalViewModel
             {
-                Date = x.Date,
+                CreatedOn = x.CreatedOn,
                 Doctor = new DoctorViewModel
                 {
                     DoctorId = x.Doctor.DoctorId,

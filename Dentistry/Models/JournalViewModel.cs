@@ -6,7 +6,7 @@ namespace Dentistry.Models
 {
     public class JournalViewModel
     {
-        public DateTime Date { get; set; }
+        public DateTime CreatedOn { get; set; }
         public DoctorViewModel Doctor { get; set; }
         public ProcedureVIewModel Procedure { get; set; }
         public MedRecordViewModel MedRecord { get; set; }

@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dentistry", "Dentistry\Dentistry.csproj", "{2DDAD372-B6DC-4E6D-9B04-1AD3293FF607}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dentistry", "Dentistry\Dentistry.csproj", "{2DDAD372-B6DC-4E6D-9B04-1AD3293FF607}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{1D627177-78B4-4AD7-837B-E539FD1932F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{1D627177-78B4-4AD7-837B-E539FD1932F7}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DentistryDatabase", "DentistryDatabase\DentistryDatabase.sqlproj", "{F5AFB0E9-E3D6-4D47-989E-7A84D8AB2272}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,12 @@ Global
 		{1D627177-78B4-4AD7-837B-E539FD1932F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D627177-78B4-4AD7-837B-E539FD1932F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D627177-78B4-4AD7-837B-E539FD1932F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5AFB0E9-E3D6-4D47-989E-7A84D8AB2272}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5AFB0E9-E3D6-4D47-989E-7A84D8AB2272}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5AFB0E9-E3D6-4D47-989E-7A84D8AB2272}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F5AFB0E9-E3D6-4D47-989E-7A84D8AB2272}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5AFB0E9-E3D6-4D47-989E-7A84D8AB2272}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5AFB0E9-E3D6-4D47-989E-7A84D8AB2272}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
