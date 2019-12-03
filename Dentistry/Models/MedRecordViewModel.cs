@@ -1,7 +1,10 @@
+using AutoMapper;
+using DAL.Models;
 using System;
 
 namespace Dentistry.Models
 {
+	[AutoMap(typeof(MedRecord))]
 	public class MedRecordViewModel
     {
 		public int MedRecordId { get; set; }

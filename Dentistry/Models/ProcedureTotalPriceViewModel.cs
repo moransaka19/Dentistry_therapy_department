@@ -8,7 +8,7 @@ namespace Dentistry.Models
     public class ProcedureTotalPriceViewModel
     {
         public MedRecordViewModel MedRecord { get; set; }
-        public ProcedureVIewModel Procedure { get; set; }
+        public ProcedureViewModel Procedure { get; set; }
         public decimal Price { get; set; }
     }
 }

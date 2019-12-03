@@ -1,8 +1,10 @@
-﻿using DAL.Models;
+﻿using AutoMapper;
+using DAL.Models;
 using DAL.Repositories;
 using Dentistry.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Dentistry.Controllers
@@ -13,17 +15,20 @@ namespace Dentistry.Controllers
         private readonly IDoctorRepository _doctorRepository;
         private readonly IProcedureRepository _procedureRepository;
         private readonly IMedRecordRepository _medRecordRepository;
+		private readonly IMapper _mapper;
 
-        public JournalController(IJournalRepository journalRepository,
+		public JournalController(IJournalRepository journalRepository,
                                  IDoctorRepository doctorRepository,
                                  IProcedureRepository procedureRepository,
-                                 IMedRecordRepository medRecordRepository)
+                                 IMedRecordRepository medRecordRepository,
+								 IMapper mapper)
         {
             _journalRepository = journalRepository;
             _doctorRepository = doctorRepository;
             _procedureRepository = procedureRepository;
             _medRecordRepository = medRecordRepository;
-        }
+			_mapper = mapper;
+		}
 
         // GET: Journal
         public ActionResult Index()
@@ -31,6 +36,7 @@ namespace Dentistry.Controllers
             var journals = _journalRepository.GetJournals();
             var journalViewmodels = journals.Select(x => new JournalViewModel
             {
+				JournalId = x.JournalId,
                 CreatedOn = x.CreatedOn,
                 Doctor = new DoctorViewModel
                 {
@@ -38,7 +44,7 @@ namespace Dentistry.Controllers
                     FirstName = x.Doctor.FirstName,
                     SecondName = x.Doctor.SecondName
                 },
-                Procedure = new ProcedureVIewModel
+                Procedure = new ProcedureViewModel
                 {
                     ProcedureId = x.Procedure.ProcedureId,
                     Name = x.Procedure.Name
@@ -79,7 +85,7 @@ namespace Dentistry.Controllers
                 SecondName = x.SecondName,
                 SickId = x.SickId
             });
-            var procedures = _procedureRepository.GetAll().Select(x => new ProcedureVIewModel
+            var procedures = _procedureRepository.GetAll().Select(x => new ProcedureViewModel
             {
                 ProcedureId = x.ProcedureId,
                 Name = x.Name
@@ -115,7 +121,13 @@ namespace Dentistry.Controllers
         // GET: Journal/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+			var journal = _mapper.Map<JournalViewModel>(_journalRepository.GetJournals().Where(x => x.JournalId == id).FirstOrDefault());
+
+			journal.Doctors = _mapper.Map<IEnumerable<DoctorViewModel>>(_doctorRepository.GetAll());
+			journal.Procedures = _mapper.Map<IEnumerable<ProcedureViewModel>>(_procedureRepository.GetAll());
+			journal.MedRecords = _mapper.Map<IEnumerable<MedRecordViewModel>>(_medRecordRepository.GetAll());
+
+			return View(journal);
         }
 
         // POST: Journal/Edit/5
@@ -125,7 +137,6 @@ namespace Dentistry.Controllers
         {
             try
             {
-                // TODO: Add update logic here
 
                 return RedirectToAction(nameof(Index));
             }

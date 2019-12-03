@@ -1,14 +1,22 @@
-﻿using System;
+﻿using AutoMapper;
+using DAL.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Dentistry.Models
 {
+	[AutoMap(typeof(Journal))]
     public class JournalViewModel
     {
-        public DateTime CreatedOn { get; set; }
+		public int JournalId { get; set; }
+		public DateTime CreatedOn { get; set; }
         public DoctorViewModel Doctor { get; set; }
-        public ProcedureVIewModel Procedure { get; set; }
+        public ProcedureViewModel Procedure { get; set; }
         public MedRecordViewModel MedRecord { get; set; }
-    }
+
+		public IEnumerable<DoctorViewModel> Doctors { get; set; }
+		public IEnumerable<ProcedureViewModel> Procedures { get; set; }
+		public IEnumerable<MedRecordViewModel> MedRecords { get; set; }
+	}
 }

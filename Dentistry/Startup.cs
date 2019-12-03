@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+using AutoMapper;
+using AutoMapper.Configuration;
 using DAL.Repositories;
 using DAL.Repositories.Implementations;
 using Microsoft.AspNetCore.Builder;
@@ -10,6 +13,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using IConfiguration = Microsoft.Extensions.Configuration.IConfiguration;
 
 namespace Dentistry
 {
@@ -29,6 +33,10 @@ namespace Dentistry
 			services.AddTransient<IJournalRepository>(_ => new JournalRepository(Configuration.GetConnectionString("DefaultConnection")));
 			services.AddTransient<IProcedureRepository>(_ => new ProcedureRepository(Configuration.GetConnectionString("DefaultConnection")));
 			services.AddTransient<IMedRecordRepository>(_ => new MedRecordRepository(Configuration.GetConnectionString("DefaultConnection")));
+
+			var mapperConfigurationBuilder = new MapperConfigurationExpression();
+
+			services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 			services.AddControllersWithViews();
 		}

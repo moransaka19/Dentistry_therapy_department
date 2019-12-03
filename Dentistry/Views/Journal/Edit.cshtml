@@ -1,0 +1,40 @@
+﻿@model Dentistry.Models.JournalViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>JournalViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+		<form asp-action="Edit">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-group">
+				<label asp-for="Doctor.DoctorId" class="control-label">Doctor: </label>
+				<select asp-for="Doctor.DoctorId">
+					@foreach (var doctor in Model.Doctors)
+					{
+						<option value="@doctor.DoctorId">
+							@doctor.FirstName @doctor.SecondName
+						</option>
+					}
+				</select>
+				<span asp-validation-for="Doctor.DoctorId" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<input type="submit" value="Save" class="btn btn-primary" />
+			</div>
+		</form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
