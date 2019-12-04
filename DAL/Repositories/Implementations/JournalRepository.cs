@@ -33,10 +33,22 @@ namespace DAL.Repositories.Implementations
 
         public override void Remove(long id)
         {
+			Connection.Execute("delete from Journal where JournalId=@journalId", new { @journalId = id });
         }
 
         public override void Update(Journal item)
         {
+			Connection.Execute(@"update Journal 
+									set DoctorId = @doctorId,
+										MedRecordId = @medRecordId,
+										ProcedureId = @procedureId
+										where JournalId = @journalId", 
+										new {
+											@doctorId = item.DoctorId,
+											@medRecordId = item.MedRecordId,
+											@procedureId = item.ProcedureId,
+											@journalId = item.JournalId
+										});
         }
 
         public IEnumerable<Journal> GetJournals()

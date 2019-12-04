@@ -34,7 +34,7 @@ namespace Dentistry
 			services.AddTransient<IProcedureRepository>(_ => new ProcedureRepository(Configuration.GetConnectionString("DefaultConnection")));
 			services.AddTransient<IMedRecordRepository>(_ => new MedRecordRepository(Configuration.GetConnectionString("DefaultConnection")));
 
-			var mapperConfigurationBuilder = new MapperConfigurationExpression();
+			// var mapperConfigurationBuilder = new MapperConfigurationExpression();
 
 			services.AddAutoMapper(Assembly.GetExecutingAssembly());
 

@@ -57,7 +57,7 @@
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.JournalId }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+					<a href="/Journal/Delete/@item.JournalId">Delete</a>
                 </td>
             </tr>
         }

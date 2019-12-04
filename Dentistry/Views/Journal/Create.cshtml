@@ -11,11 +11,18 @@
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
-            @Html.DropDownListFor(m => m.DoctorId, Model.Doctors.Select(x => new SelectListItem($"{x.FirstName} {x.SecondName}", x.DoctorId.ToString())))
-            <br />
-            @Html.DropDownListFor(m => m.ProcedureId, Model.Procedures.Select(x => new SelectListItem($"{x.Name}", x.ProcedureId.ToString())))
-            <br />
-            @Html.DropDownListFor(m => m.MedRecordId, Model.MedRecords.Select(x => new SelectListItem($"{x.FirstName} {x.SecondName}", x.MedRecordId.ToString())))
+			<label>
+				Doctor: 
+				@Html.DropDownListFor(m => m.DoctorId, Model.Doctors.Select(x => new SelectListItem($"{x.FirstName} {x.SecondName}", x.DoctorId.ToString())))
+			</label>
+			<label>
+				Procedure: 
+				@Html.DropDownListFor(m => m.ProcedureId, Model.Procedures.Select(x => new SelectListItem($"{x.Name}", x.ProcedureId.ToString())))
+			</label>
+			<label>
+				MedRecord: 
+				@Html.DropDownListFor(m => m.MedRecordId, Model.MedRecords.Select(x => new SelectListItem($"{x.FirstName} {x.SecondName}", x.MedRecordId.ToString())))
+			</label>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
