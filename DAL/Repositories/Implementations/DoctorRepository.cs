@@ -28,12 +28,13 @@ namespace DAL.Repositories.Implementations
 
 		public override void Update(Doctor item)
 		{
-
+			Connection.Execute(@"update Doctor set FirstName = @firstName, SecondName = @secondName where DoctorId = @id",
+				new { @firstName = item.FirstName, @secondName = item.SecondName, @id = item.DoctorId });
 		}
 
 		public override void Remove(long id)
 		{
-
+			Connection.Execute("delete from Doctor where DoctorId = @doctorId", new { @doctorId = id });
 		}
 	}
 }
