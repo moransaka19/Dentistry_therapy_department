@@ -6,7 +6,6 @@ using System.Text;
 
 namespace Dentistry.Models
 {
-	[AutoMap(typeof(Journal))]
     public class JournalViewModel
     {
 		public int JournalId { get; set; }

@@ -55,8 +55,7 @@ namespace Dentistry.Controllers
 					MedRecordId = x.MedRecord.MedRecordId,
 					DOB = x.MedRecord.DOB,
 					FirstName = x.MedRecord.FirstName,
-					SecondName = x.MedRecord.SecondName,
-					SickId = x.MedRecord.SickId
+					SecondName = x.MedRecord.SecondName
 				},
 			});
 
@@ -83,8 +82,7 @@ namespace Dentistry.Controllers
 				MedRecordId = x.MedRecordId,
 				DOB = x.DOB,
 				FirstName = x.FirstName,
-				SecondName = x.SecondName,
-				SickId = x.SickId
+				SecondName = x.SecondName
 			});
 			var procedures = _procedureRepository.GetAll().Select(x => new ProcedureViewModel
 			{

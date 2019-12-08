@@ -26,7 +26,7 @@ namespace Dentistry.Controllers
 				.Select(x => new ProcedureTotalPriceViewModel() 
 						{
 							Price = x.Price,
-							MedRecord = new MedRecordViewModel() { FirstName = x.MedRecord.FirstName, SecondName = x.MedRecord.SecondName, SickId = x.MedRecord.SickId, MedRecordId = x.MedRecord.MedRecordId, DOB = x.MedRecord.DOB },
+							MedRecord = new MedRecordViewModel() { FirstName = x.MedRecord.FirstName, SecondName = x.MedRecord.SecondName, MedRecordId = x.MedRecord.MedRecordId, DOB = x.MedRecord.DOB },
 							Procedure = new ProcedureViewModel() { Name = x.Procedure.Name, ProcedureId = x.Procedure.ProcedureId }
 						});
             
