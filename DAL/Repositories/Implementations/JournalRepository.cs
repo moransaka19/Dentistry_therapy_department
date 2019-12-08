@@ -12,11 +12,6 @@ namespace DAL.Repositories.Implementations
 			: base(connectionString)
 		{ }
 
-        public override IEnumerable<Journal> GetAll()
-        {
-            return Connection.Query<Journal>("select * from Journal");
-        }
-
         public override void Add(Journal item)
         {
             var query = "insert into [dbo].[Journal] (DoctorId, ProcedureId, MedRecordId) values (@DoctrorId, @ProcedureId, @MedRecordId); SELECT CAST(SCOPE_IDENTITY() as int)";
@@ -31,7 +26,7 @@ namespace DAL.Repositories.Implementations
 				item.JournalId = (int)id;
         }
 
-        public override void Remove(long id)
+        public void Remove(long id)
         {
 			Connection.Execute("delete from Journal where JournalId=@journalId", new { @journalId = id });
         }

@@ -11,11 +11,6 @@ namespace DAL.Repositories.Implementations
         {
         }
 
-        public override IEnumerable<Sick> GetAll()
-        {
-            return Connection.Query<Sick>("select * from Sick");
-        }
-
         public override void Add(Sick item)
         {
             var query = "insert into [dbo].[Sick] (Name) values (@Name); SELECT CAST(SCOPE_IDENTITY() as int)";
@@ -25,15 +20,9 @@ namespace DAL.Repositories.Implementations
 				item.SickId = (int)id;
         }
 
-
-        public override void Remove(long id)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public override void Update(Sick item)
         {
-            throw new System.NotImplementedException();
+            Connection.Execute("update Sick set Name = @Name where SickId = @SickId", item);
         }
     }
 }

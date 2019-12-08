@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using AutoMapper;
 using AutoMapper.Configuration;
+using DAL;
 using DAL.Repositories;
 using DAL.Repositories.Implementations;
 using Microsoft.AspNetCore.Builder;
@@ -29,16 +32,14 @@ namespace Dentistry
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddTransient<IDoctorRepository>(_ => new DoctorRepository(Configuration.GetConnectionString("DefaultConnection")));
-			services.AddTransient<IJournalRepository>(_ => new JournalRepository(Configuration.GetConnectionString("DefaultConnection")));
-			services.AddTransient<IProcedureRepository>(_ => new ProcedureRepository(Configuration.GetConnectionString("DefaultConnection")));
-			services.AddTransient<IMedRecordRepository>(_ => new MedRecordRepository(Configuration.GetConnectionString("DefaultConnection")));
-
-			// var mapperConfigurationBuilder = new MapperConfigurationExpression();
-
 			services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 			services.AddControllersWithViews();
+		}
+
+		public void ConfigureContainer(ContainerBuilder builder)
+		{
+			IoC.Bootstrapper.Bootstrap(builder);
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

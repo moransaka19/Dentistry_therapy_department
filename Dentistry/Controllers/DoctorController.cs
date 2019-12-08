@@ -74,7 +74,7 @@ namespace Dentistry.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
-            catch (Exception e)
+            catch
             {
 				return RedirectToAction(nameof(Index));
 			}
@@ -88,7 +88,7 @@ namespace Dentistry.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
-            catch(Exception e)
+            catch
             {
 				return RedirectToAction(nameof(Index));
 			}

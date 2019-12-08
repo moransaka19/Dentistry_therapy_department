@@ -21,19 +21,15 @@ namespace DAL.Repositories.Implementations
 				item.ProcedureId = (int)id;
         }
 
-        public override IEnumerable<Procedure> GetAll()
+        public void Remove(long id)
         {
-            return Connection.Query<Procedure>("select * from [Procedure]");
-        }
-
-        public override void Remove(long id)
-        {
-            throw new System.NotImplementedException();
+			Connection.Execute("delete [Procedure] where ProcedureId = @id", new { @id = id });
         }
 
         public override void Update(Procedure item)
         {
-            throw new System.NotImplementedException();
+			Connection.Execute("update [Procedure] set Name = @name where ProcedureId = @id", 
+				new { @name = item.Name, @id = item.ProcedureId });
         }
 
         public IEnumerable<ProcedureTotalPrice> GetProcedureTotalPrices()

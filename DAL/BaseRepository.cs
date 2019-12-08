@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dapper;
+using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Data.SqlClient;
@@ -14,9 +15,13 @@ namespace DAL
 			Connection = new SqlConnection(connectionString);
 		}
 
+		public virtual IEnumerable<T> GetAll() =>
+			Connection.Query<T>($"select * from [{typeof(T).Name}]");
+
+		public virtual T GetById(int id) =>
+			Connection.QuerySingle<T>($"select * from [{typeof(T).Name}] where {typeof(T).Name}Id = @id", new { @id = id });
+
 		public abstract void Add(T item);
-		public abstract IEnumerable<T> GetAll();
-		public abstract void Remove(long id);
 		public abstract void Update(T item);
 
 		public void Dispose()
