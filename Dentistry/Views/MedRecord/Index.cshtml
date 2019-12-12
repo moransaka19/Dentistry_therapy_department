@@ -6,6 +6,8 @@
 
 <h1>Index</h1>
 
+<input class="form-control" />
+<button onclick="if (!window.find(this.previousElementSibling.value, false, false, false, false, false)) window.getSelection().empty()">Find next</button>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -20,26 +22,29 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DOB)
+                <a href="/MedRecord?order=0">Asc</a>
+                <a href="/MedRecord?order=1">Desc</a>
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SecondName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DOB)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.MedRecordId })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SecondName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DOB)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MedRecordId })
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

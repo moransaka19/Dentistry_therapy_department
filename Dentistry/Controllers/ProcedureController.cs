@@ -57,7 +57,7 @@ namespace Dentistry.Controllers
         // GET: Procedure/Edit/5
         public ActionResult Edit(int id)
         {
-			var procedure = _mapper.Map<ProcedureViewModel>(_procedureRepository.GetAll().FirstOrDefault(x => x.ProcedureId == id));
+			var procedure = _mapper.Map<ProcedureViewModel>(_procedureRepository.GetById(id));
 
             return View(procedure);
         }

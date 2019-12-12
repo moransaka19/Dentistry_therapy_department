@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using DAL;
 using DAL.Models;
 using DAL.Repositories;
 using Dentistry.Models;
@@ -24,9 +25,9 @@ namespace Dentistry.Controllers
         }
 
         // GET: MedRecord
-        public ActionResult Index()
+        public ActionResult Index([FromQuery] OrderDirection order)
         {
-            var medRecords = _mapper.Map<IEnumerable<MedRecordViewModel>>(_medRecordRepository.GetAll());
+            var medRecords = _mapper.Map<IEnumerable<MedRecordViewModel>>(_medRecordRepository.GetAll(x => x.DOB, order));
 
             return View(medRecords);
         }

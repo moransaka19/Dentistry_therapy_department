@@ -6,6 +6,8 @@
 
 <h1>Отчет</h1>
 
+<input class="form-control" />
+<button onclick="if (!window.find(this.previousElementSibling.value, false, false, false, false, false)) window.getSelection().empty()">Find next</button>
 <table class="table">
     <thead>
         <tr>
@@ -24,21 +26,22 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.MedRecord.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MedRecord.SecondName)
-            </td>
-            <th>
-                @Html.DisplayFor(modelItem => item.Procedure.Name)
-            </th>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MedRecord.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MedRecord.SecondName)
+                </td>
+                <th>
+                    @Html.DisplayFor(modelItem => item.Procedure.Name)
+                </th>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

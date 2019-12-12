@@ -6,6 +6,8 @@
 
 <h1>Index</h1>
 
+<input class="form-control" />
+<button onclick="if (!window.find(this.previousElementSibling.value, false, false, false, false, false)) window.getSelection().empty()">Find next</button>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -22,19 +24,20 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SecondName)
-            </td>
-			<td>
-				@Html.ActionLink("Edit", "Edit", new { id = item.DoctorId })
-				@*@Html.ActionLink("Delete", "Delete", new { id=item.DoctorId })*@
-			</td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SecondName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.DoctorId })
+                    @*@Html.ActionLink("Delete", "Delete", new { id=item.DoctorId })*@
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

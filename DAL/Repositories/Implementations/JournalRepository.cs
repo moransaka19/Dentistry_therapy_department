@@ -9,8 +9,7 @@ namespace DAL.Repositories.Implementations
     public class JournalRepository : BaseRepository<Journal>, IJournalRepository
     {
         public JournalRepository(string connectionString)
-			: base(connectionString)
-		{ }
+			: base(connectionString) { }
 
         public override void Add(Journal item)
         {
@@ -46,7 +45,7 @@ namespace DAL.Repositories.Implementations
 										});
         }
 
-        public IEnumerable<Journal> GetJournals()
+        public IEnumerable<Journal> GetJournals(OrderDirection? direction)
         {
             var result = Connection.Query<Journal, Doctor, Procedure, MedRecord, Journal>("GetJournal",
                 map: (jr, d, p, md) =>
@@ -62,7 +61,13 @@ namespace DAL.Repositories.Implementations
                 },
                 splitOn:"DoctorId,ProcedureId,MedRecordId",
                 commandType: CommandType.StoredProcedure);
-            return result;
+
+            return direction switch
+            {
+                OrderDirection.Asc => result.OrderBy(x => x.CreatedOn),
+                OrderDirection.Desc => result.OrderByDescending(x => x.CreatedOn),
+                _ => result,
+            };
         }
     }
 }
