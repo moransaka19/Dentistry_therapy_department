@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DAL.Repositories
 {
-	public interface IDoctorRepository : IBaseRepository<Doctor>
+	public interface IDoctorRepository : IBaseRepository<Doctor>, IRemovable
 	{
 	}
 }

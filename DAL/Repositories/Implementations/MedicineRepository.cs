@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using DAL.Models;
 using Dapper;
@@ -19,19 +20,9 @@ namespace DAL.Repositories.Implementations
 				item.MedicineId = (int)id;
         }
 
-        public override System.Collections.Generic.IEnumerable<Medicine> GetAll()
-        {
-            return Connection.Query<Medicine>("select * from Medicine");
-        }
-
-        public override void Remove(long id)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public override void Update(Medicine item)
         {
-            throw new System.NotImplementedException();
+            Connection.Execute("update Medicine set Name = @Name, Price = @Price where MedicineId = @MedicineId", item);
         }
     }
 }

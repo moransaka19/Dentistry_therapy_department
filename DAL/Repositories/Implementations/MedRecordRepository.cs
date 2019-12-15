@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using DAL.Models;
 using Dapper;
 
@@ -9,25 +10,23 @@ namespace DAL.Repositories.Implementations
         public MedRecordRepository(string connectionString) 
             : base(connectionString)
         { }
-
+        
         public override void Add(MedRecord item)
         {
-            throw new System.NotImplementedException();
-        }
+            var query = "insert into MedRecord (FirstName, SecondName, DOB) values (@FirstName, @SecondName, @DOB); SELECT CAST(SCOPE_IDENTITY() as int)";
+            int? id = Connection.Query<int>(query, item).FirstOrDefault();
 
-        public override IEnumerable<MedRecord> GetAll()
-        {
-            return Connection.Query<MedRecord>("select * from MedRecord");
-        }
-
-        public override void Remove(long id)
-        {
-            throw new System.NotImplementedException();
+            if (id != null)
+                item.MedRecordId = (int)id;
         }
 
         public override void Update(MedRecord item)
         {
-            throw new System.NotImplementedException();
+            Connection.Execute(@"update MedRecord
+                                    set FirstName = @FirstName,
+                                        SecondName = @SecondName,
+                                        DOB = @DOB
+                                        where MedRecordId = @MedRecordId", item);
         }
     }
 }

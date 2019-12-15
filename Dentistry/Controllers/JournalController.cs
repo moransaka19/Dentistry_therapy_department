@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using DAL;
 using DAL.Models;
 using DAL.Repositories;
 using Dentistry.Models;
@@ -32,10 +33,10 @@ namespace Dentistry.Controllers
 		}
 
 		// GET: Journal
-		public ActionResult Index()
+		public ActionResult Index([FromQuery] OrderDirection order)
 		{
-			var journals = _journalRepository.GetJournals();
-			var journalViewmodels = journals.Select(x => new JournalViewModel
+			var journals = _journalRepository.GetJournals(order);
+			var journalViewModels = journals.Select(x => new JournalViewModel
 			{
 				JournalId = x.JournalId,
 				CreatedOn = x.CreatedOn,
@@ -55,12 +56,11 @@ namespace Dentistry.Controllers
 					MedRecordId = x.MedRecord.MedRecordId,
 					DOB = x.MedRecord.DOB,
 					FirstName = x.MedRecord.FirstName,
-					SecondName = x.MedRecord.SecondName,
-					SickId = x.MedRecord.SickId
+					SecondName = x.MedRecord.SecondName
 				},
 			});
 
-			return View(journalViewmodels);
+			return View(journalViewModels);
 		}
 
 		// GET: Journal/Details/5
@@ -83,8 +83,7 @@ namespace Dentistry.Controllers
 				MedRecordId = x.MedRecordId,
 				DOB = x.DOB,
 				FirstName = x.FirstName,
-				SecondName = x.SecondName,
-				SickId = x.SickId
+				SecondName = x.SecondName
 			});
 			var procedures = _procedureRepository.GetAll().Select(x => new ProcedureViewModel
 			{
@@ -138,7 +137,7 @@ namespace Dentistry.Controllers
 		{
 			try
 			{
-				var journal = _journalRepository.GetAll().FirstOrDefault(x => x.JournalId == id);
+				var journal = _journalRepository.GetById(id);
 
 				journal.MedRecordId = model.MedRecordId;
 				journal.ProcedureId = model.ProcedureId;

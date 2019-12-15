@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace DAL.Repositories
 {
-    public interface IJournalRepository : IBaseRepository<Journal>
+    public interface IJournalRepository : IBaseRepository<Journal>, IRemovable
     {
-        IEnumerable<Journal> GetJournals();
+        IEnumerable<Journal> GetJournals(OrderDirection? direction = null);
     }
 }

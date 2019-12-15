@@ -6,6 +6,8 @@
 
 <h1>Журнал</h1>
 
+<input class="form-control"/>
+<button onclick="if (!window.find(this.previousElementSibling.value, false, false, false, false, false)) window.getSelection().empty()">Find next</button>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -14,6 +16,9 @@
         <tr>
             <th>
                 Дата
+
+                <a href="/Journal?order=0">Asc </a>
+                <a href="/Journal?order=1">Desc</a>
             </th>
             <th>
                 Имя Доктора
@@ -57,7 +62,7 @@
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.JournalId }) |
-					<a href="/Journal/Delete/@item.JournalId">Delete</a>
+                    <a href="/Journal/Delete/@item.JournalId">Delete</a>
                 </td>
             </tr>
         }
