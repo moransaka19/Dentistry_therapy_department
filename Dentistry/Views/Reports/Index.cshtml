@@ -6,8 +6,6 @@
 
 <h1>Отчет</h1>
 
-<input class="form-control" />
-<button onclick="if (!window.find(this.previousElementSibling.value, false, false, false, false, false)) window.getSelection().empty()">Find next</button>
 <table class="table">
     <thead>
         <tr>
@@ -22,6 +20,9 @@
             </th>
             <th>
                 Цена
+            </th>
+            <th>
+                ДР
             </th>
         </tr>
     </thead>
@@ -39,9 +40,28 @@
                     @Html.DisplayFor(modelItem => item.Procedure.Name)
                 </th>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Price)
+                    @if (item.MedRecord.DOB.DayOfYear == DateTime.Now.DayOfYear)
+                    {
+                        <span style="color: red">
+                            @(item.Price) (-50%)
+                        </span>
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.Price)
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MedRecord.DOB)
                 </td>
             </tr>
         }
+    <tr>
+        <td></td>
+        <td></td>
+        <th></th>
+        <td>@Model.Select(x => x.Price).Sum()</td>
+        <td></td>
+    </tr>
     </tbody>
 </table>

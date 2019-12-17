@@ -78,3 +78,4 @@ _[Ss]cripts
 *.dot[Cc]over
 /DentistryDatabase/DentistryDatabase.dbmdl
 /DentistryDatabase/DentistryDatabase.jfm
+*.jfm
