@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Отчет";
+    var sum = 0;
 }
 
 <h1>Отчет</h1>
@@ -26,6 +27,7 @@
         </tr>
     </thead>
     <tbody>
+
         @foreach (var item in Model)
         {
             <tr>
@@ -42,6 +44,7 @@
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
             </tr>
+            @sum = sum + item.Price;
         }
-    </tbody>
+</tbody>
 </table>
