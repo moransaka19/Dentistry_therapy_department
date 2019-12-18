@@ -15,26 +15,30 @@ namespace Dentistry.Controllers
     {
 		private readonly IMapper _mapper;
 		private readonly IProcedureRepository _procedureRepository;
+        private readonly IMedicineRepository _medicineRepository;
 
-		public ProcedureController(IMapper mapper,
-			IProcedureRepository procedureRepository)
+        public ProcedureController(IMapper mapper,
+			IProcedureRepository procedureRepository,
+            IMedicineRepository medicineRepository)
 		{
 			_mapper = mapper;
 			_procedureRepository = procedureRepository;
-		}
+            _medicineRepository = medicineRepository;
+        }
 
         // GET: Procedure
         public ActionResult Index()
         {
 			var procedures = _mapper.Map<IEnumerable<ProcedureViewModel>>(_procedureRepository.GetAll());
-
             return View(procedures);
         }
 
         // GET: Procedure/Create
         public ActionResult Create()
         {
-            return View();
+            var procedure = new ProcedureViewModel();
+            procedure.Medicines = _mapper.Map<IEnumerable<Medicine>, IEnumerable<MedicineViewModel>>(_medicineRepository.GetAll());
+            return View(procedure);
         }
 
         // POST: Procedure/Create
