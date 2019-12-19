@@ -16,6 +16,9 @@ namespace Dentistry.MapProfiles
 				.ForMember(p => p.Medicines, cfg => cfg.MapFrom(x => x.MedicineIds.Select(x => new Medicine { MedicineId = x })));
 
 			CreateMap<Procedure, ProcedureViewModel>();
+
+			CreateMap<JournalViewModel, Journal>();
+			CreateMap<Journal, JournalViewModel>();
 		}
 	}
 }

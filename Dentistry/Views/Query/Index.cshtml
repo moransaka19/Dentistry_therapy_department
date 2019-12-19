@@ -1,0 +1,28 @@
+﻿@using System.Net
+
+@model Dentistry.Models.QueryViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form action="/query/index" method="post">
+    @Html.TextAreaFor(x => x.Query)
+    <br />
+    <button type="submit">Execute</button>
+    <br />
+    @if (ViewData.ModelState.ErrorCount > 0)
+    {
+        @Html.Raw("Error =(")
+    }
+
+    @if (Model?.Table != null)
+    {
+        @Html.Raw(@WebUtility.HtmlDecode(Model.Table))
+    }
+</form>
