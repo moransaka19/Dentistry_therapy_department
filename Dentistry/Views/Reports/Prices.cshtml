@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Dentistry.Models.ProcedureTotalPriceViewModel>
+
+@{
+    ViewData["Title"] = "Стоимость прооцедур клиентов";
+}
+
+<h1>Отчет</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Имя
+            </th>
+            <th>
+                Фамилия
+            </th>
+            <th>
+                Имя процедуры
+            </th>
+            <th>
+                Цена
+            </th>
+            <th>
+                ДР
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MedRecord.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MedRecord.SecondName)
+                </td>
+                <th>
+                    @Html.DisplayFor(modelItem => item.Procedure.Name)
+                </th>
+                <td>
+                    @if (item.MedRecord.DOB.Month == DateTime.Now.Month && item.MedRecord.DOB.Day == DateTime.Now.Day)
+                    {
+                        <span style="color: red">
+                            @(item.Price) (-50%)
+                        </span>
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.Price)
+                    }
+                </td>
+                <td>
+                    @if (item.MedRecord.DOB.Month == DateTime.Now.Month && item.MedRecord.DOB.Day == DateTime.Now.Day)
+                    {
+                        <span style="color: red">
+                            @(item.MedRecord.DOB)
+                        </span>
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.MedRecord.DOB)
+                    }
+                </td>
+            </tr>
+        }
+        <tr>
+            <td></td>
+            <td></td>
+            <th></th>
+            <td>@Model.Select(x => x.Price).Sum()</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>

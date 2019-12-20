@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Dentistry.Models.ProcedureSumPricesViewModel>
+
+@{
+    ViewData["Title"] = "Прейскурант цен на процедуры";
+}
+
+<h1>Index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Название процедуры
+            </th>
+            <th>
+                Цена
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Procedure.Name
+                </td>
+                <td>
+                    @item.SumPrices
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

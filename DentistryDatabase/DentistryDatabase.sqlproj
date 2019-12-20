@@ -74,8 +74,14 @@
     <Build Include="dbo\Stored Procedures\GetProceduresTotalPrice.sql" />
     <None Include="Scripts\ScriptsIgnoredOnImport.sql" />
     <Build Include="dbo\Tables\ProcedureMedicine.sql" />
+    <Build Include="dbo\Stored Procedures\GetProcedureSumPrices.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Post-Deployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
 </Project>

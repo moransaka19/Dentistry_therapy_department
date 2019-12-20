@@ -73,5 +73,20 @@ namespace DAL.Repositories.Implementations
 				commandType: CommandType.StoredProcedure);
 			return result;
 		}
+
+		public IEnumerable<ProcedureSumPrices> GetProcedureSumPrices()
+		{
+			var result = Connection.Query<ProcedureSumPrices, Procedure, ProcedureSumPrices>("GetProcedureSumPrices",
+				map: (psp, p) =>
+				{
+					psp.Procedure = p;
+
+					return psp;
+				},
+				splitOn: "ProcedureId",
+				commandType: CommandType.StoredProcedure);
+
+			return result;
+		}
 	}
 }

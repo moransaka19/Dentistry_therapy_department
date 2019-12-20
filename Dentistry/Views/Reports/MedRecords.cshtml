@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Dentistry.Models.MedRecordViewModel>
+
+@{
+    ViewData["Title"] = "Clients";
+}
+
+<h1>Клиенты</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Имя
+            </th>
+            <th>
+                Фамилия
+            </th>
+            <th>
+                Дата рождения
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            @if (item.DOB.Date.DayOfYear > DateTime.Now.DayOfYear &&
+              DateTime.Now.Year - item.DOB.Year < 18)
+            {
+                <tr>
+                    <td>
+                        <span style="color: red">
+                            @(item.FirstName)
+                        </span>
+                    </td>
+                    <td>
+                        <span style="color: red">
+                            @(item.SecondName)
+                        </span>
+                    </td>
+                    <td>
+                        <span style="color: red">
+                            @(item.DOB)
+                        </span>
+                    </td>
+                </tr>
+
+            }
+            else
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SecondName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DOB)
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

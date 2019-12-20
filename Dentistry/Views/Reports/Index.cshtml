@@ -1,78 +1,62 @@
-﻿@model IEnumerable<Dentistry.Models.ProcedureTotalPriceViewModel>
-
-@{
-    ViewData["Title"] = "Отчет";
-    var sum = 0;
+﻿@{
+    ViewData["Title"] = "Отчеты";
 }
 
-<h1>Отчет</h1>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Имя
-            </th>
-            <th>
-                Фамилия
-            </th>
-            <th>
-                Имя процедуры
-            </th>
-            <th>
-                Цена
-            </th>
-            <th>
-                ДР
-            </th>
-        </tr>
-    </thead>
-    <tbody>
+<h2>Выбирите отчет</h2>
+<div class="tabl">
+    <div class="but">
+        <div>
+            <a asp-controller="Reports" asp-action="MedRecords"><button type="button" class="btn btn-outline-primary">Клиенты</button></a>
+        </div>
+        <div class="">
+            <a asp-controller="Reports" asp-action="Prices"><button type="button" class="btn btn-outline-primary">Стоимость прооцедур клиентов</button></a>
+        </div>
+    </div>
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MedRecord.FirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MedRecord.SecondName)
-                </td>
-                <th>
-                    @Html.DisplayFor(modelItem => item.Procedure.Name)
-                </th>
-                <td>
-                    @if (item.MedRecord.DOB.Month == DateTime.Now.Month && item.MedRecord.DOB.Day == DateTime.Now.Day)
-                    {
-                        <span style="color: red">
-                            @(item.Price) (-50%)
-                        </span>
-                    }
-                    else
-                    {
-                        @Html.DisplayFor(modelItem => item.Price)
-                    }
-                </td>
-                <td>
-                    @if (item.MedRecord.DOB.Month == DateTime.Now.Month && item.MedRecord.DOB.Day == DateTime.Now.Day)
-                    {
-                        <span style="color: red">
-                            @(item.MedRecord.DOB)
-                        </span>
-                    }
-                    else
-                    {
-                        @Html.DisplayFor(modelItem => item.MedRecord.DOB)
-                    }
-                </td>
-            </tr>
-	     }
-    <tr>
-        <td></td>
-        <td></td>
-        <th></th>
-        <td>@Model.Select(x => x.Price).Sum()</td>
-        <td></td>
-    </tr>
-    </tbody>
-</table>
+    <div class="but">
+        <div>
+            <a asp-controller="Reports" asp-action="Procedures"><button type="button" class="btn btn-outline-primary">Прейскурант цен на процедуры</button></a>
+        </div>
+        <div class="">
+            <button type="button" class="btn btn-outline-primary">4</button>
+        </div>
+    </div>
+
+
+    <div class="but">
+        <div>
+            <button type="button" class="btn btn-outline-primary">5</button>
+        </div>
+        <div class="">
+            <button type="button" class="btn btn-outline-primary">6</button>
+        </div>
+    </div>
+</div>
+
+<style type="text/css">
+    h2 {
+        text-align: center
+    }
+
+    .but {
+        display: table-cell;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    button {
+        width: 200px;
+        height: 200px;
+    }
+
+    div {
+        padding-left: 5px;
+        padding-bottom: 5px;
+    }
+
+    .tabl{
+        display: block;
+        margin-left: 230px;
+    }
+</style>
