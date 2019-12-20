@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Dentistry.Models.JournalViewModel>
 
 @{
-    ViewData["Title"] = "Журнал";
+    ViewData["Title"] = "Journal";
 }
 
-<h1>Журнал</h1>
+<h1>Journal</h1>
 
 <input class="form-control"/>
 <button onclick="if (!window.find(this.previousElementSibling.value, false, false, false, false, false)) window.getSelection().empty()">Find next</button>
@@ -15,25 +15,25 @@
     <thead>
         <tr>
             <th>
-                Дата
+                Date
 
                 <a href="/Journal?order=0">Asc </a>
                 <a href="/Journal?order=1">Desc</a>
             </th>
             <th>
-                Имя Доктора
+                Doctor name
             </th>
             <th>
-                Фамилия доктора
+                Doctor surname
             </th>
             <th>
-                Название процедуры
+                Procedure name
             </th>
             <th>
-                Имя пациента
+                Client name
             </th>
             <th>
-                Фамилия пациента
+                Client surname
             </th>
         </tr>
     </thead>

@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Dentistry.Models.MedicineViewModel>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Medicine";
 }
 
-<h1>Index</h1>
+<h1>Medicine</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -13,10 +13,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                Medicine name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Price)
+                Price
             </th>
             <th></th>
         </tr>

@@ -1,22 +1,22 @@
 ﻿@{
-    ViewData["Title"] = "Отчеты";
+    ViewData["Title"] = "Reports";
 }
 
 
-<h2>Выбирите отчет</h2>
+<h2>Choose report</h2>
 <div class="tabl">
     <div class="but">
         <div>
-            <a asp-controller="Reports" asp-action="MedRecords"><button type="button" class="btn btn-outline-primary">Клиенты</button></a>
+            <a asp-controller="Reports" asp-action="MedRecords"><button type="button" class="btn btn-outline-primary">Clients</button></a>
         </div>
         <div class="">
-            <a asp-controller="Reports" asp-action="Prices"><button type="button" class="btn btn-outline-primary">Стоимость прооцедур клиентов</button></a>
+            <a asp-controller="Reports" asp-action="Prices"><button type="button" class="btn btn-outline-primary">Costs of clients</button></a>
         </div>
     </div>
 
     <div class="but">
         <div>
-            <a asp-controller="Reports" asp-action="Procedures"><button type="button" class="btn btn-outline-primary">Прейскурант цен на процедуры</button></a>
+            <a asp-controller="Reports" asp-action="Procedures"><button type="button" class="btn btn-outline-primary">Procedure prices</button></a>
         </div>
         <div class="">
             <button type="button" class="btn btn-outline-primary">4</button>

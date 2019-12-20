@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<Dentistry.Models.ProcedureViewModel>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Procedures";
 }
 
-<h1>Index</h1>
+<h1>Procedures</h1>
 
 <input class="form-control" />
 <button onclick="if (!window.find(this.previousElementSibling.value, false, false, false, false, false)) window.getSelection().empty()">Find next</button>
@@ -15,7 +15,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                Procedure name
             </th>
             <th></th>
         </tr>
