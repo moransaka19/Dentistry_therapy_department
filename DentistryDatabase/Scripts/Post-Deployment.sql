@@ -50,8 +50,8 @@ values
 ('Doctor First name 2', 'Doctor Second name 2'),
 ('Doctor First name 3', 'Doctor Second name 3')
 
-insert into Journal (DoctorId, MedRecordId, ProcedureId)
+insert into Journal (ExecutingDate, DoctorId, MedRecordId, ProcedureId)
 values
-(1, 1, 1),
-(2, 2, 2),
-(3, 3, 3)
+('2019-12-28 10:00:00 AM',1, 1, 1),
+('2019-12-26 9:30:00 AM',2, 2, 2),
+('2019-12-27 8:30:00 AM',3, 3, 3)

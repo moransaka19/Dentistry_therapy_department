@@ -40,6 +40,7 @@ namespace Dentistry.Controllers
 			{
 				JournalId = x.JournalId,
 				CreatedOn = x.CreatedOn,
+				ExecutingDate = x.ExecutingDate,
 				Doctor = new DoctorViewModel
 				{
 					DoctorId = x.Doctor.DoctorId,
@@ -108,6 +109,7 @@ namespace Dentistry.Controllers
 		{
 			var journal = new Journal
 			{
+				ExecutingDate = model.ExecutingDate,
 				DoctorId = model.DoctorId,
 				ProcedureId = model.ProcedureId,
 				MedRecordId = model.MedRecordId
@@ -139,6 +141,7 @@ namespace Dentistry.Controllers
 			{
 				var journal = _journalRepository.GetById(id);
 
+				journal.ExecutingDate = model.ExecutingDate;
 				journal.MedRecordId = model.MedRecordId;
 				journal.ProcedureId = model.ProcedureId;
 				journal.DoctorId = model.DoctorId;

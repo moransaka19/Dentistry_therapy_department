@@ -7,6 +7,7 @@ namespace Dentistry.Models
 {
     public class AddJournalViewModel
     {
+        public DateTime ExecutingDate { get; set; }
         public IEnumerable<DoctorViewModel> Doctors { get; set; }
         public IEnumerable<ProcedureViewModel> Procedures { get; set; }
         public IEnumerable<MedRecordViewModel> MedRecords { get; set; }

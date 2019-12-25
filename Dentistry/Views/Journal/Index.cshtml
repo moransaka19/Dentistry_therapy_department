@@ -4,10 +4,12 @@
     ViewData["Title"] = "Journal";
 }
 
-<h1>Journal</h1>
 
-<input class="form-control"/>
-<button onclick="if (!window.find(this.previousElementSibling.value, false, false, false, false, false)) window.getSelection().empty()">Find next</button>
+<div class="con">
+    <h1>Journal</h1>
+    <input class="form-control" />
+    <button onclick="if (!window.find(this.previousElementSibling.value, false, false, false, false, false)) window.getSelection().empty()">Find next</button>
+</div>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -19,6 +21,9 @@
 
                 <a href="/Journal?order=0">Asc </a>
                 <a href="/Journal?order=1">Desc</a>
+            </th>
+            <th>
+                Execute date
             </th>
             <th>
                 Doctor name
@@ -43,6 +48,9 @@
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.CreatedOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExecutingDate)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Doctor.FirstName)

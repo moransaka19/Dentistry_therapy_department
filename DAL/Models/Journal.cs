@@ -6,6 +6,7 @@ namespace DAL.Models
 	{
 		public int JournalId { get; set; }
 		public DateTime CreatedOn { get; set; }
+		public DateTime ExecutingDate { get; set; }
 		public int DoctorId { get; set; }
         public Doctor Doctor { get; set; }
         public int ProcedureId { get; set; }

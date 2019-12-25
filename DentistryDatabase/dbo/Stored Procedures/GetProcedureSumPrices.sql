@@ -1,5 +1,4 @@
-﻿go
-create procedure GetProcedureSumPrices as
+﻿create procedure GetProcedureSumPrices as
 Begin
 select SUM(m.Price) as SumPrices, p.* from [Procedure] p
 left join ProcedureMedicine pm on pm.ProcedureId = p.ProcedureId

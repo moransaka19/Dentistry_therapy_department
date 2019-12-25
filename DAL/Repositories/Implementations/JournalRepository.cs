@@ -13,9 +13,10 @@ namespace DAL.Repositories.Implementations
 
         public override void Add(Journal item)
         {
-            var query = "insert into [dbo].[Journal] (DoctorId, ProcedureId, MedRecordId) values (@DoctrorId, @ProcedureId, @MedRecordId); SELECT CAST(SCOPE_IDENTITY() as int)";
+            var query = "insert into [dbo].[Journal] (DoctorId, ProcedureId, MedRecordId, ExecutingDate) values (@DoctrorId, @ProcedureId, @MedRecordId, @ExecutingDate); SELECT CAST(SCOPE_IDENTITY() as int)";
             int? id = Connection.Query<int>(query, new
             {
+                @ExecutingDate = item.ExecutingDate,
                 @DoctrorId = item.DoctorId,
                 @ProcedureId = item.ProcedureId,
                 @MedRecordId = item.MedRecordId 
@@ -33,12 +34,14 @@ namespace DAL.Repositories.Implementations
         public override void Update(Journal item)
         {
 			Connection.Execute(@"update Journal 
-									set DoctorId = @doctorId,
+									set ExecutingDate = @executingDate,
+                                        DoctorId = @doctorId,
 										MedRecordId = @medRecordId,
 										ProcedureId = @procedureId
 										where JournalId = @journalId", 
 										new {
-											@doctorId = item.DoctorId,
+                                            @executingDate = item.ExecutingDate,
+                                            @doctorId = item.DoctorId,
 											@medRecordId = item.MedRecordId,
 											@procedureId = item.ProcedureId,
 											@journalId = item.JournalId

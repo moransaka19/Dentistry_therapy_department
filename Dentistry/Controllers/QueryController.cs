@@ -73,7 +73,7 @@ namespace Dentistry.Controllers
             }
             catch (Exception e)
             {
-                ModelState.AddModelError(string.Empty, e.ToString());
+                ModelState.AddModelError(string.Empty, e.Message);
                 return View(model);
             }
         }
