@@ -39,7 +39,8 @@ namespace Dentistry.Controllers
                 {
                     Price = x.Price,
                     MedRecord = new MedRecordViewModel() { FirstName = x.MedRecord.FirstName, SecondName = x.MedRecord.SecondName, MedRecordId = x.MedRecord.MedRecordId, DOB = x.MedRecord.DOB },
-                    Procedure = new ProcedureViewModel() { Name = x.Procedure.Name, ProcedureId = x.Procedure.ProcedureId }
+                    Procedure = new ProcedureViewModel() { Name = x.Procedure.Name, ProcedureId = x.Procedure.ProcedureId },
+                    Journal = new JournalViewModel() { JournalId = x.Journal.JournalId, ExecutingDate = x.Journal.ExecutingDate }
                 });
 
             return View(procedureTotalPrices);

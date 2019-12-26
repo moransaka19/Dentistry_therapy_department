@@ -41,11 +41,11 @@
                     @Html.DisplayFor(modelItem => item.Procedure.Name)
                 </th>
                 <td>
-                    @if (item.MedRecord.DOB.Month == DateTime.Now.Month && item.MedRecord.DOB.Day == DateTime.Now.Day)
+                    @if (item.MedRecord.DOB.Month == item.Journal.ExecutingDate.Month && item.MedRecord.DOB.Day == item.Journal.ExecutingDate.Day)
                     {
-                        <span style="color: red">
-                            @(item.Price) (-50%)
-                        </span>
+                    <span style="color: red">
+                        @Html.DisplayFor(modelItem => item.Price) (-50%)
+                    </span>
                     }
                     else
                     {
@@ -53,11 +53,11 @@
                     }
                 </td>
                 <td>
-                    @if (item.MedRecord.DOB.Month == DateTime.Now.Month && item.MedRecord.DOB.Day == DateTime.Now.Day)
+                    @if (item.MedRecord.DOB.Month == item.Journal.ExecutingDate.Month && item.MedRecord.DOB.Day == item.Journal.ExecutingDate.Day)
                     {
-                        <span style="color: red">
-                            @(item.MedRecord.DOB)
-                        </span>
+                    <span style="color: red">
+                        @Html.DisplayFor(modelItem => item.MedRecord.DOB)
+                    </span>
                     }
                     else
                     {

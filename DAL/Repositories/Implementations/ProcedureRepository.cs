@@ -16,8 +16,8 @@ namespace DAL.Repositories.Implementations
 		{
 			var query =
 				@"select p.*, m.* from [Procedure] p" +
-				" inner join ProcedureMedicine pm on p.ProcedureId = pm.ProcedureId" +
-				" inner join Medicine m on m.MedicineId = pm.MedicineId";
+				" left join ProcedureMedicine pm on p.ProcedureId = pm.ProcedureId" +
+				" left join Medicine m on m.MedicineId = pm.MedicineId";
 
 
 			return Connection.Query<Procedure, Medicine, Procedure>(query, 
@@ -41,8 +41,10 @@ namespace DAL.Repositories.Implementations
 			var query = "insert into [dbo].[Procedure] (Name) values (@Name); SELECT CAST(SCOPE_IDENTITY() as int)";
 			int? id = Connection.Query<int>(query, item).FirstOrDefault();
 
-			Connection.Execute("insert into ProcedureMedicine (ProcedureId, MedicineId) values (@ProcedureId, @MedicineId)",
-				item.Medicines.Select(x => new { ProcedureId = id, x.MedicineId }));
+			Connection.Execute("insert into ProcedureMedicine (ProcedureId, MedicineId, Count) values (@ProcedureId, @MedicineId, @Count)",
+				item.Medicines
+					.Select(x => new ProcedureMedicine { ProcedureId = (int) id, MedicineId = x.MedicineId })
+					.GroupBy(x => x, (key, res) => new ProcedureMedicine { ProcedureId = key.ProcedureId, MedicineId = key.MedicineId, Count = res.Where(x => x.Equals(key)).Count() }));
 
 			if (id != null)
 				item.ProcedureId = (int)id;
@@ -61,15 +63,16 @@ namespace DAL.Repositories.Implementations
 
 		public IEnumerable<ProcedureTotalPrice> GetProcedureTotalPrices()
 		{
-			var result = Connection.Query<ProcedureTotalPrice, Procedure, MedRecord, ProcedureTotalPrice>("GetProceduresTotalPrice",
-				map: (ptp, p, mr) =>
+			var result = Connection.Query<ProcedureTotalPrice, Procedure, MedRecord, Journal, ProcedureTotalPrice>("GetProceduresTotalPrice",
+				map: (ptp, p, mr, j) =>
 				{
 					ptp.MedRecord = mr;
 					ptp.Procedure = p;
+					ptp.Journal = j;
 
 					return ptp;
 				},
-				splitOn: "ProcedureId,MedRecordId",
+				splitOn: "ProcedureId,MedRecordId,JournalId",
 				commandType: CommandType.StoredProcedure);
 			return result;
 		}

@@ -3,6 +3,7 @@ BEGIN
 SELECT 
 	j.JournalId,
     j.CreatedOn,
+    j.ExecutingDate,
     d.*,
     p.*,
     md.*

@@ -9,5 +9,6 @@ namespace Dentistry.Models
     {
         public string Query { get; set; }
         public string Table { get; set; }
+        public string Exeption { get; set; }
     }
 }

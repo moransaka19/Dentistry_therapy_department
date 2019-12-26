@@ -48,6 +48,7 @@ namespace Dentistry.Controllers
         {
             try
             {
+                model.Medicines = model.MedicineIds.Select(x => new MedicineViewModel { MedicineId = x });
 				_procedureRepository.Add(_mapper.Map<Procedure>(model));
 
                 return RedirectToAction(nameof(Index));

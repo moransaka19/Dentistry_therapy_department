@@ -18,8 +18,7 @@
     <br />
     @if (ViewData.ModelState.ErrorCount > 0)
     {
-        Exception ex = new Exception(Model.Table);
-        @Html.Raw(ex.Message);
+        @Model.Exeption
     }
 
     @if (Model?.Table != null)

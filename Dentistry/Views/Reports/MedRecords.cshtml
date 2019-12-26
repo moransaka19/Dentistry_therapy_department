@@ -23,8 +23,8 @@
     <tbody>
         @foreach (var item in Model)
         {
-            @if (item.DOB.Date.DayOfYear > DateTime.Now.DayOfYear &&
-              DateTime.Now.Year - item.DOB.Year < 18)
+            @*@if (DateTime.Now.Year - item.DOB.Year < 18)*@
+            @if (item.DOB.AddYears(18) > DateTime.Now)
             {
                 <tr>
                     <td>
@@ -39,7 +39,7 @@
                     </td>
                     <td>
                         <span style="color: red">
-                            @(item.DOB)
+                            @Html.DisplayFor(modelItem => item.DOB)
                         </span>
                     </td>
                 </tr>

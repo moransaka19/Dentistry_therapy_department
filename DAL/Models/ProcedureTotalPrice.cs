@@ -10,6 +10,7 @@ namespace DAL.Models
     {
         public MedRecord MedRecord { get; set; }
         public Procedure Procedure { get; set; }
+        public Journal Journal { get; set; }
         public decimal Price { get; set; }
     }
 }

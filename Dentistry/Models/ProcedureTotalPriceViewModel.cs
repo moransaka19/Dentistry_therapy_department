@@ -13,9 +13,10 @@ namespace Dentistry.Models
 
         public MedRecordViewModel MedRecord { get; set; }
         public ProcedureViewModel Procedure { get; set; }
+        public JournalViewModel Journal { get; set; }
         public decimal Price 
         { 
-            get => MedRecord.DOB.DayOfYear == DateTime.Now.DayOfYear ? Math.Round(_price / 2, 2) : Math.Round(_price); 
+            get => MedRecord.DOB.DayOfYear == Journal.ExecutingDate.DayOfYear ? Math.Round(_price / 2, 2) : Math.Round(_price); 
             set => _price = value; 
         }
     }
