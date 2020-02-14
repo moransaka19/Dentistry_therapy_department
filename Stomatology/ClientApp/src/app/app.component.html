@@ -1,0 +1,18 @@
+<h1>Список моделей</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <td>Имя</td>
+      <td>Фамилия</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let d of doctors">
+        <td>{{d?.firstName}}</td>
+        <td>{{d?.secondName}}</td>
+        <td>
+        </td>
+    </tr>
+  </tbody>
+</table>

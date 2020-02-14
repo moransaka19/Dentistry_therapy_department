@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
+using System.Text;
 
-namespace DAL
+namespace DAL.Repositories
 {
-	public interface IBaseRepository<T>
-	{
-		IEnumerable<T> GetAll();
-		IEnumerable<T> GetAll<Q>(Expression<Func<T, Q>> expression = null, OrderDirection direction = OrderDirection.Asc);
-		T GetById(int id);
-		void Add(T item);
-		void Update(T item);
-	}
+    public interface IBaseRepository<T>
+    {
+        IEnumerable<T> GetAll();
+        T GetById(int id);
+        void Add(T item);
+        void Update(T item);
+    }
 }

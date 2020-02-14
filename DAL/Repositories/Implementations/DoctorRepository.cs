@@ -2,34 +2,34 @@
 using Dapper;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Text;
 
 namespace DAL.Repositories.Implementations
 {
-	public class DoctorRepository : BaseRepository<Doctor>, IDoctorRepository
-	{
-		public DoctorRepository(string connectionString)
-			: base(connectionString)
-		{ }
+    public class DoctorRepository : BaseRepository<Doctor>, IDoctorRepository
+    {
+        public DoctorRepository(string connectionString) 
+            : base(connectionString)
+        { }
 
-		public override void Add(Doctor item)
-		{
-			var query = "insert into [dbo].[Doctor] (FirstName, SecondName) values (@FirstName, @SecondName); SELECT CAST(SCOPE_IDENTITY() as int)";
-			int? id = Connection.Query<int>(query, item).FirstOrDefault();
+        public override void Add(Doctor item)
+        {
+            string query = "insert into [dbo].[Doctor] (FirstName, SecondName) " +
+                           "values (@firstName, @secondName); " +
+                           "SELECT CAST(SCOPE_IDENTITY() as int)";
 
-			if (id != null)
-				item.DoctorId = (int)id;
-		}
+            int? id = Connection.Query<int>(query, item).FirstOrDefault();
 
-		public override void Update(Doctor item)
-		{
-			Connection.Execute(@"update Doctor set FirstName = @firstName, SecondName = @secondName where DoctorId = @id",
-				new { @firstName = item.FirstName, @secondName = item.SecondName, @id = item.DoctorId });
-		}
+            if (id != null)
+                item.DoctorId = (int)id;
+        }
 
-		public void Remove(long id)
-		{
-			Connection.Execute("delete from Doctor where DoctorId = @doctorId", new { @doctorId = id });
-		}
-	}
+        public override void Update(Doctor item)
+        {
+            Connection.Execute(@"update [Doctor] set FirstName = @firstName, SecondName = @secondName where DoctorId = @id",
+                new { @id = item.DoctorId, @firstName = item.FirstName, @secondName = item.SecondName});
+        }
+    }
 }
