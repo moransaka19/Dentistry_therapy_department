@@ -98,6 +98,11 @@ namespace Dentistry.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
         {
+            Func<int, bool> a = delegate (int x) { return true; };
+
+            Enumerable.Range(1, 5)
+                .Select(a);
+
             try
             {
                 // TODO: Add delete logic here

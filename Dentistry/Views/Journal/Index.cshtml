@@ -68,8 +68,7 @@
                     @Html.DisplayFor(modelItem => item.MedRecord.SecondName)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.JournalId }) |
-                    <a href="/Journal/Delete/@item.JournalId">Delete</a>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.JournalId })
                 </td>
             </tr>
         }
